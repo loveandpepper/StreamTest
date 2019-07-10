@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
+//привет Санек!
+
 public class Main {
 public static ArrayList<Items> mainlist = new ArrayList<>();
 
