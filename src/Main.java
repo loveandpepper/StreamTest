@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,6 +23,9 @@ public static ArrayList<Items> mainlist = new ArrayList<>();
 
         windowsSells(mainlist);
         minAndMaxprice(mainlist);
+
+        MapCreator mp = new MapCreator();
+        workWithMap(mp.creating());
     }
 
     public static void windowsSells(List<Items> win){
@@ -48,5 +52,16 @@ public static ArrayList<Items> mainlist = new ArrayList<>();
 
         int win10summ = win.stream().filter(value -> value.getName().contains("10") && value.getName().contains("Win")).map(Items::getPrice).reduce(0, Integer::sum);
         System.out.println(String.format("\nСтоимость всех объектов Win10 в листе %d рублей!", win10summ)); //Отфильтровали, чтобы имя содержало "10" и "Win", выбрали цены этих объектов, сложили их с дефолтным значением 0
+    }
+
+    public static void workWithMap(Map<String, Integer> map){
+       map.entrySet().forEach(System.out::println);             //выводим всю мапу одной строчкой
+
+        System.out.println("\nКлючи мапы, у которых значения меньше 150:");
+        map.entrySet().stream()
+               .filter(x -> x.getValue() < 150)
+               .map(Map.Entry::getKey)
+               .forEach(System.out::println);
+
     }
 }
